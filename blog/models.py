@@ -10,6 +10,12 @@ class Post(models.Model):
     status = models.BooleanField(default=False)
     published_date = models.DateTimeField(null=True)
     
+    class Meta:
+        app_label = 'blog'
+        verbose_name = "پست"
+        verbose_name_plural = "پست ها"
+        ordering = ['-created_date']
+
     def __str__(self):
         return self.title
     
