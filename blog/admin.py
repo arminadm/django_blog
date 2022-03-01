@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post
+from blog.models import Post, Category
 
 # Register your models here.
 class postAdmin(admin.ModelAdmin):
@@ -11,3 +11,7 @@ class postAdmin(admin.ModelAdmin):
     # exclude = ('content',)
     # fields = ('content', 'title')
 admin.site.register(Post, postAdmin)
+
+class categoryAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Category, categoryAdmin)
