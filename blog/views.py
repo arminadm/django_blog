@@ -7,8 +7,10 @@ def blog_view(request):
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
-def single_view(request):
-    return render(request, "blog/blog-single.html")
+def single_view(request, pid):
+    post = get_object_or_404(Post, pk=pid)
+    context = {'post': post}
+    return render(request, "blog/blog-single.html", context)
 
 def test(request, name, family_name, age, pid):
     post = get_object_or_404(Post, pk=pid)
