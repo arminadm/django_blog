@@ -16,3 +16,6 @@ def test(request, name, family_name, age, pid):
     post = get_object_or_404(Post, pk=pid)
     context = {'post': post, 'name': name, 'family_name': family_name, 'age': age}
     return render(request, 'test.html', context)
+
+def test_function(request):
+    return render(request, 'test2.html')

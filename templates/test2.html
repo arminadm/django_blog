@@ -1,0 +1,24 @@
+{% load blog_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    {% plustwo 3 as number %}
+    {{number}}
+    <h1>we have published {% post_counter %} posts until now</h1>
+    <h1>testing filter function to truncate post's content</h1>
+    {% allowed_posts as posts %}
+    {% for post in posts %}
+    <p>{{post.content|snippet:50}}</p>
+    {% endfor %}
+    <h1>using inclusion_tag to attach latestposts.html </h1>
+    {% latestposts %}
+</body>
+</html>
