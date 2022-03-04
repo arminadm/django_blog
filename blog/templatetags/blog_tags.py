@@ -22,7 +22,7 @@ def allowed_posts():
 def snippet(content, limit=20):
     return content[:limit] + '...'
 
-@register.inclusion_tag('latestposts.html')
+@register.inclusion_tag('blog/latestposts.html')
 def latestposts():
     posts = Post.objects.filter(status=1).order_by('-published_date')[:3]
     return {'posts': posts}
