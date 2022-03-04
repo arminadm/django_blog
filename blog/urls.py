@@ -7,5 +7,6 @@ urlpatterns = [
     path("", blog_view, name='index'),
     path("<int:pid>", single_view, name='single'),
     path("test/<str:name>/<str:family_name>/<int:age>/<int:pid>", test, name='test'),
-    path("test/", test_function, name="test-page")
+    path("test/", test_function, name="test-page"),
+    path("category/<str:cat_name>", blog_view, name="category")
 ]
