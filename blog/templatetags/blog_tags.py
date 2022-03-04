@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post
+from blog.models import Post, Category
 
 register = template.Library()
 
@@ -26,3 +26,12 @@ def snippet(content, limit=20):
 def latestposts():
     posts = Post.objects.filter(status=1).order_by('-published_date')[:3]
     return {'posts': posts}
+
+@register.inclusion_tag('blog/post-categories.html')
+def postcategories():
+    categories = Category.objects.all()
+    posts = Post.objects.filter(status=1)
+    category_dict = {}
+    for cat in categories:
+        category_dict[cat] = posts.filter(category=cat).count()
+    return {'categories': category_dict}
