@@ -1,2 +1,2 @@
-# django_simple_projects
- simple projects from the following course: shorturl.at/hCLZ0
+# django_projects
+projects from the following course: shorturl.at/hCLZ0
