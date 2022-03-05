@@ -2,10 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Category
 
 # Create your views here.
-def blog_view(request, cat_name=None):
+def blog_view(request, **kwargs):
     posts = Post.objects.filter(status=1)
-    if cat_name:
-        posts = posts.filter(category__name=cat_name)
+    '''category search scenario'''
+    if kwargs.get('cat_name') != None:
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    '''post writer search scenario'''
+    if kwargs.get('writer_username') != None:
+        posts = posts.filter(author__username=kwargs['writer_username'])
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
