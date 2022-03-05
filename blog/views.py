@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Category
-
 # Create your views here.
 def blog_view(request, **kwargs):
     posts = Post.objects.filter(status=1)
@@ -25,3 +24,12 @@ def test(request, name, family_name, age, pid):
 
 def test_function(request):
     return render(request, 'test2.html')
+
+def search_func(request):
+    # print(request.__dict__)
+    if request.method == 'GET':
+        posts = Post.objects.filter(status=1)
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+    context = {'posts': posts}
+    return render(request, "blog/blog-home.html", context)
