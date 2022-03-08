@@ -1,5 +1,5 @@
 from django import forms
-from website.models import Contact
+from website.models import Contact, newsLetter
 
 '''using form by models.model'''
 # class NameForm(forms.Form):
@@ -9,7 +9,12 @@ from website.models import Contact
 #     message = forms.CharField(widget=forms.Textarea)
 
 class contactForm(forms.ModelForm):
-    last_name = forms.CharField(max_length=255)
     class Meta:
         model = Contact
+        fields = '__all__'
+
+
+class newsLetterForm(forms.ModelForm):
+    class Meta:
+        model = newsLetter
         fields = '__all__'
