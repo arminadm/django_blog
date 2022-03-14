@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from website.models import Contact
 from website.forms import contactForm, newsLetterForm
+from django.contrib import messages
 # Create your views here.
 def index_view(request):
     return render(request, 'website/index.html')
@@ -17,6 +18,9 @@ def contact_view(request):
         form = contactForm(request.POST)
         if form.is_valid():
             form.save()
+            message = messages.add_message(request, messages.SUCCESS, 'Ticket submitted successfully')
+        else:
+            message = messages.add_message(request, messages.ERROR, 'Failed to send your ticket')
         return HttpResponseRedirect('/contact')
 
 '''using form by models.model'''
