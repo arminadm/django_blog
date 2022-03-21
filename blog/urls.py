@@ -10,5 +10,6 @@ urlpatterns = [
     path("test/", test_function, name="test-page"),
     path("category/<str:cat_name>", blog_view, name="category"),
     path("writer/<str:writer_username>", blog_view, name='writer'),
-    path("search/", search_func, name='search')
+    path("search/", search_func, name='search'),
+    path("tag/<str:tag_name>", blog_view, name='tag'),
 ]

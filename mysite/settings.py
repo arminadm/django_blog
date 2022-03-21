@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'website.apps.WebsiteConfig',
+    'taggit',
     'debug_toolbar',
     'robots',
     'blog'
@@ -53,6 +54,9 @@ SITE_ID = 2
 # robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# taggit
+TAGGIT_CASE_INSENSITIVE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
