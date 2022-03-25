@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
 from django.core.paginator import Paginator, EmptyPage, InvalidPage, PageNotAnInteger
 # Create your views here.
 def blog_view(request, **kwargs):
@@ -29,7 +29,8 @@ def blog_view(request, **kwargs):
 
 def single_view(request, pid):
     post = get_object_or_404(Post, pk=pid, status=1)
-    context = {'post': post}
+    comments = Comment.objects.filter(post=post.id, approved=True)
+    context = {'post': post, 'comments': comments}
     return render(request, "blog/blog-single.html", context)
 
 def test(request, name, family_name, age, pid):

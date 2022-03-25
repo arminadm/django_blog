@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Contact(models.Model):
     name = models.CharField(max_length=255)
@@ -12,10 +11,9 @@ class Contact(models.Model):
         app_label = 'website'
         verbose_name = 'مخاطبین'
         verbose_name_plural = 'مخاطبین'
-        ordering = ['created_time']
+        ordering = ['-created_time']
     def __str__(self):
         return self.subject
-    
 
 class newsLetter(models.Model):
     email = models.EmailField(max_length=254)

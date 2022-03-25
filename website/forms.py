@@ -1,7 +1,6 @@
 from django import forms
 from website.models import Contact, newsLetter
 from captcha.fields import CaptchaField
-
 '''using form by models.model'''
 # class NameForm(forms.Form):
 #     name = forms.CharField(max_length=255)

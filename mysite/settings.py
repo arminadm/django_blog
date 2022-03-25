@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'taggit',
     'debug_toolbar',
+    'captcha',
     'robots',
     'blog',
-    'captcha',
     'django_summernote',
 ]
 
@@ -57,6 +57,11 @@ SITE_ID = 2
 # robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# multi captcha admin configs
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
 
 # taggit
 TAGGIT_CASE_INSENSITIVE = True
@@ -93,11 +98,6 @@ SUMMERNOTE_CONFIG = {
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
     }
-}
-
-# multi captcha-admin configs
-MULTI_CAPTCHA_ADMIN = {
-    'engine': 'simple-captcha',
 }
 
 MIDDLEWARE = [
