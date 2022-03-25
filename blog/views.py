@@ -1,6 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Category, Comment
 from django.core.paginator import Paginator, EmptyPage, InvalidPage, PageNotAnInteger
+from blog.forms import commentForm
+from django.contrib import messages
+
 # Create your views here.
 def blog_view(request, **kwargs):
     posts = Post.objects.filter(status=1)
@@ -28,10 +32,21 @@ def blog_view(request, **kwargs):
     return render(request, "blog/blog-home.html", context)
 
 def single_view(request, pid):
-    post = get_object_or_404(Post, pk=pid, status=1)
-    comments = Comment.objects.filter(post=post.id, approved=True)
-    context = {'post': post, 'comments': comments}
-    return render(request, "blog/blog-single.html", context)
+    if request.method == 'POST':
+        form = commentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            message = messages.add_message(request, messages.SUCCESS, 'Your comment successfully added to the post')
+        else:
+            message = messages.add_message(request, messages.ERROR, 'failed to add your comment')
+        return HttpResponseRedirect(f'/blog/{pid}')
+        
+    elif request.method == 'GET':
+        commentform = commentForm()
+        post = get_object_or_404(Post, pk=pid, status=1)
+        comments = Comment.objects.filter(post=post.id, approved=True)
+        context = {'post': post, 'comments': comments, 'commentForm':commentform}
+        return render(request, "blog/blog-single.html", context)
 
 def test(request, name, family_name, age, pid):
     post = get_object_or_404(Post, pk=pid)
