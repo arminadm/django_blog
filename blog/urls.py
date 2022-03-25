@@ -1,9 +1,11 @@
 from django.urls import URLPattern, path
-from .views import *
+from blog.views import *
+from blog.feeds import LatestEntriesFeed
 
 app_name = 'blog'
 
 urlpatterns = [
+    path('rss/feed/', LatestEntriesFeed()),
     path("", blog_view, name='index'),
     path("<int:pid>", single_view, name='single'),
     path("test/<str:name>/<str:family_name>/<int:age>/<int:pid>", test, name='test'),
