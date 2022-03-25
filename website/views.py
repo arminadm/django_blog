@@ -23,7 +23,7 @@ def contact_view(request):
             message = messages.add_message(request, messages.ERROR, 'Failed to send your ticket')
         return HttpResponseRedirect('/contact')
 
-'''using form by models.model'''
+'''using form by models.model
 # def testFrom(request):
 #     if request.method == 'GET':
 #         form = NameForm()
@@ -39,6 +39,7 @@ def contact_view(request):
 #             return HttpResponse('done')
 #         else:
 #             return HttpResponse('failed')
+'''
 
 '''using form by models.modelForm'''
 def testForm(request):
