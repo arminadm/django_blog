@@ -17,8 +17,13 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('/')
+            else:
+                message = messages.add_message(request, messages.ERROR, 'Failed to logged in')
+                return redirect('/account/login')
         else:
-            messages.add_message(request, messages.ERROR, 'Failed to login')
+            message = messages.add_message(request, messages.ERROR, 'username or password is not correct')
+            return redirect('/account/login')
+
     if request.method == 'GET':
         form = AuthenticationForm()
         context = {'form': form}
