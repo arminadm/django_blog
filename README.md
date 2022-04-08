@@ -16,7 +16,9 @@ ___
 
 2- install python (version: 3.8) and the requirements: `pip install -r requirements.txt`
 
-3- run the project: `python manage.py runserver`
+3- use `python manage.py makemigrations` and `python manage.py migrate`
+
+4- run the project: `python manage.py runserver`
 ___
 # How to use
 After creating superuser using `python manage.py createsuperuser` you can access to admin panel, create any post that you want and adjust other options as many as you need to
