@@ -5,7 +5,7 @@ ___
 > ## Docker
 1- Clone the repo: `git clone https://github.com/arminadm/django_blog.git`
 
-2- switch to the direction that dockerfile exist
+2- switch to the direction that dockerfile exist `cd django_blog`
 
 3- use `docker build .` to build the image
 
